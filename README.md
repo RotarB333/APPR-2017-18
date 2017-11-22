@@ -2,10 +2,29 @@
 
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
-## Tematika
+## Analiza možnih povezav med geografsko lego in razvojem držav ZN
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+V projektu bom analiziral in združil podatke o indikatorjih razvoja posameznih držav ZN, in iskal možne povezave z naravoslovnimi podatki(oddaljenost od ekvatorja, povprečna temperatura), poskušal bom določiti kateri indikatorji so v skladu s teorijo, da se razvojna stopnja povečuje z oddaljenostjo od ekvatorja in katere države izstopajo. 
+
+
+Za naravoslovne podtake bom uporabil vikipedijo in global data bank, za indikatorje razvoja pa data.un.org (podatkovna baza ZN)
+
+Za indikatorje razvoja bom upošteval:
+
+* BDP per capita
+* pričakovana starost
+* število let šolanja
+* delež prebivalstva v revščini
+* število umorov, kriminal 
+* zdravstvena oskrba
+* dostop do interneta
+* porodniški dopust
+* število otrok rojenih v bolnišnicah ...
+
+
+
+
+
 
 ## Program
 
