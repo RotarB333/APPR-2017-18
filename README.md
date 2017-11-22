@@ -7,7 +7,8 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 V projektu bom analiziral in združil podatke o indikatorjih razvoja posameznih držav ZN, in iskal možne povezave z naravoslovnimi podatki(oddaljenost od ekvatorja, povprečna temperatura), poskušal bom določiti kateri indikatorji so v skladu s teorijo, da se razvojna stopnja povečuje z oddaljenostjo od ekvatorja in katere države izstopajo. 
 
 
-Za naravoslovne podtake bom uporabil vikipedijo in global data bank, za indikatorje razvoja pa data.un.org (podatkovna baza ZN)
+Za naravoslovne podtake bom uporabil vikipedijo in global data bank, za indikatorje razvoja pa data.un.org (podatkovna baza ZN).
+Ker pri nekaterih državah ni podatkov za vsako leto, bom pri vseh upošteval podatke za zadnje leto, ko je na voljo. Po potrebi bom dodal še kakšne bolj zanimive indikatorje razvoja.
 
 Za indikatorje razvoja bom upošteval:
 
