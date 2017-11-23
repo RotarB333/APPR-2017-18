@@ -28,6 +28,7 @@ Za indikatorje razvoja bom upošteval:
 * geografska širina - inidkatorji razvoja, ki so na voljo za vsa leta
 * povprečna temperatura - indikatorji razvoja
 * povprečna nadmorska višina - indikatorji razvoja
+* posamezne tabele za celine
 
 
 
