@@ -25,8 +25,10 @@ Za indikatorje razvoja bom upošteval:
 ## Tabele
 
 * geografska širina - indikatorji razvoja
+* geografska širina - inidkatorji razvoja, ki so na voljo za vsa leta
 * povprečna temperatura - indikatorji razvoja
 * povprečna nadmorska višina - indikatorji razvoja
+
 
 
 
