@@ -22,7 +22,11 @@ Za indikatorje razvoja bom upošteval:
 * porodniški dopust
 * število otrok rojenih v bolnišnicah ...
 
+## Tabele
 
+* geografska širina - indikatorji razvoja
+* povprečna temperatura - indikatorji razvoja
+* povprečna nadmorska višina - indikatorji razvoja
 
 
 
