@@ -52,3 +52,13 @@ druzine <- uvozi.druzine(levels(obcine$obcina))
 # datoteko, tukaj pa bi klicali tiste, ki jih potrebujemo v
 # 2. fazi. Seveda bi morali ustrezno datoteko uvoziti v prihodnjih
 # fazah.
+
+sl <- locale("sl", decimal_mark = ".", grouping_mark = ",")
+
+uvozi.legadrzav <- function() {
+  data <- read_xlsx('podatki/Lega_drzav.xlsx')
+  colnames(data) <- c("kratica",'GS','drzava')
+  return(data)
+}
+
+Lega_drzav <- uvozi.legadrzav()
