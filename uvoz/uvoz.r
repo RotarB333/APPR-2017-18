@@ -62,3 +62,12 @@ uvozi.legadrzav <- function() {
 }
 
 Lega_drzav <- uvozi.legadrzav()
+
+uvozi.indikatorjirazvoja <- function() {
+  data <- read_xls('podatki/Human Development Index and its components.xls', n_max=197) %>%
+    drop_na(1)
+  data <- data[-1, -c(4,6,8,10,12)]
+  return(data)
+}
+
+indikatorji <- uvozi.indikatorjirazvoja()
