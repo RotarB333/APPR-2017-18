@@ -58,6 +58,7 @@ sl <- locale("sl", decimal_mark = ".", grouping_mark = ",")
 uvozi.legadrzav <- function() {
   data <- read_xlsx('podatki/Lega_drzav.xlsx')
   colnames(data) <- c("kratica",'GS','drzava')
+  names(data) <- c('kratica','latitude','Country')
   return(data)
 }
 
@@ -67,7 +68,22 @@ uvozi.indikatorjirazvoja <- function() {
   data <- read_xls('podatki/Human Development Index and its components.xls', n_max=197) %>%
     drop_na(1)
   data <- data[-1, -c(4,6,8,10,12)]
+  names(data) <- c("HDI rank", "Country",'HDI value(2014)','Life expectancy(years)','Expected years of schooling',
+                   'Mean years of schooling','GNI per capita','GNI per capita rank - HDI rank')
   return(data)
 }
 
 indikatorji <- uvozi.indikatorjirazvoja()
+
+
+uvozi.hrate <- function() {
+  link <- "https://en.wikipedia.org/wiki/List_of_countries_by_intentional_homicide_rate#Notes"
+  stran <- html_session(link) %>% read_html()
+  tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
+    .[[2]] %>% html_table(dec = ",") %>% drop_na(6) %>% select(-Notes)
+  return(tabela)
+}
+
+zamenjave <- c("Hong Kong, China (SAR)" = "Hong Kong",'Bolivia (Plurinational State of)'='Bolivia')
+
+data$Country <- ifelse(is.na(zamenjave[data$Country]), data$Country, zamenjave[data$Country])
