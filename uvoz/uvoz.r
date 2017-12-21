@@ -70,6 +70,10 @@ uvozi.indikatorjirazvoja <- function() {
   data <- data[-1, -c(4,6,8,10,12)]
   names(data) <- c("HDI rank", "Country",'HDI value(2014)','Life expectancy(years)','Expected years of schooling',
                    'Mean years of schooling','GNI per capita','GNI per capita rank - HDI rank')
+  zamenjave <- c("Hong Kong, China (SAR)" = "Hong Kong",'Bolivia (Plurinational State of)'='Bolivia',
+                 'Brunei Darussalam'='Brunei','Cabo Verde'='Cape Verde','Democratic Republic of the Congo'='Congo (Democratic Republic of the)',
+                 'Republic of the Congo'='Congo',"Côte d'Ivoire"='Ivory Coast')
+  data <- data %>% mutate(Country = ifelse(Country %in% names(zamenjave), zamenjave[Country], Country))
   return(data)
 }
 
@@ -81,9 +85,13 @@ uvozi.hrate <- function() {
   stran <- html_session(link) %>% read_html()
   tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
     .[[2]] %>% html_table(dec = ",") %>% drop_na(6) %>% select(-Notes)
-  return(tabela)
+  hrate <- tabela
+  colnames(hrate) <- c("country", "rate", "count", "region", "subregion", "year")
+  hrate <- hrate %>% mutate()
+  return(hrate)
 }
 
-zamenjave <- c("Hong Kong, China (SAR)" = "Hong Kong",'Bolivia (Plurinational State of)'='Bolivia')
+hrate <- uvozi.hrate()
+
 
 data$Country <- ifelse(is.na(zamenjave[data$Country]), data$Country, zamenjave[data$Country])
