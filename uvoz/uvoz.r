@@ -59,6 +59,10 @@ uvozi.legadrzav <- function() {
   data <- read_xlsx('podatki/Lega_drzav.xlsx')
   colnames(data) <- c("kratica",'GS','drzava')
   names(data) <- c('kratica','latitude','Country')
+  zamenjave <- c("Congo [DRC]" = "Democratic Republic of the Congo", "Congo [Republic]"= "Republic of the Congo","Côte d'Ivoire"='Ivory Coast',
+                 "Timor-Leste" = "East Timor","Macedonia [FYROM]"="Macedonia","Myanmar [Burma]"="Myanmar","Palestinian Territories" = "Palestine",
+                 "Sao Tomé and Príncipe" = "Sao Tome and Principe")
+  data <- data %>% mutate(Country = ifelse(Country %in% names(zamenjave), zamenjave[Country], Country))
   return(data)
 }
 
@@ -71,12 +75,16 @@ uvozi.indikatorjirazvoja <- function() {
   names(data) <- c("HDI rank", "Country",'HDI value(2014)','Life expectancy(years)','Expected years of schooling',
                    'Mean years of schooling','GNI per capita','GNI per capita rank - HDI rank')
   zamenjave <- c("Hong Kong, China (SAR)" = "Hong Kong",'Bolivia (Plurinational State of)'='Bolivia',
-                 'Brunei Darussalam'='Brunei','Cabo Verde'='Cape Verde','Democratic Republic of the Congo'='Congo (Democratic Republic of the)',
-                 'Republic of the Congo'='Congo',"Côte d'Ivoire"='Ivory Coast')
+                 'Brunei Darussalam'='Brunei','Cabo Verde'='Cape Verde','Congo (Democratic Republic of the)'='Democratic Republic of the Congo',
+                 'Congo'='Republic of the Congo',"Côte d'Ivoire"='Ivory Coast','Iran (Islamic Republic of)'='Iran','Korea (Republic of)' = 'South Korea',
+                 "Lao People's Democratic Republic"="Laos","The former Yugoslav Republic of Macedonia" = "Macedonia","Micronesia (Federated States of)"="Micronesia",
+                 "Moldova (Republic of)" = "Moldova", "Palestine, State of" = "Palestine","Russian Federation"="Russia","Syrian Arab Republic" = "Syria",
+                 "Timor-Leste" = "East Timor","Venezuela (Bolivarian Republic of)" = "Venezuela","Viet Nam" = "Vietnam",
+                 'Tanzania (United Republic of)' = 'Tanzania')
   data <- data %>% mutate(Country = ifelse(Country %in% names(zamenjave), zamenjave[Country], Country))
   return(data)
 }
-
+# Manjkajo Naura, Tuvalu, Monaco, San Marino, Vatican City
 indikatorji <- uvozi.indikatorjirazvoja()
 
 
@@ -90,7 +98,7 @@ uvozi.hrate <- function() {
   hrate <- hrate %>% mutate()
   return(hrate)
 }
-
+# Manjka South Sudan
 hrate <- uvozi.hrate()
 
 
