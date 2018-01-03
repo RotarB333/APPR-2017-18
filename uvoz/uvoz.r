@@ -103,3 +103,4 @@ hrate <- uvozi.hrate()
 
 
 data$Country <- ifelse(is.na(zamenjave[data$Country]), data$Country, zamenjave[data$Country])
+skupaj1 <- merge(indikatorji,Lega_drzav,by="Country")
