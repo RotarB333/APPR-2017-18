@@ -11,3 +11,16 @@ zemljevid <- pretvori.zemljevid(zemljevid)
 # Izračunamo povprečno velikost družine
 povprecja <- druzine %>% group_by(obcina) %>%
   summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
+
+#GRAFI
+
+graf1 <- ggplot(data = skupaj, aes(x = latitude, y = rate)) + geom_point(stat = 'identity')
+graf1 <- graf1 + scale_x_continuous(breaks = seq(-80,80,10))
+graf1 <- graf1 + scale_y_continuous(limits = c(-1,10)) 
+
+
+graf2 <- ggplot(data = skupaj, aes(x = latitude, y = HDIrank)) + geom_point(stat = 'identity')
+graf2
+
+graf3 <- ggplot(data = skupaj, aes(x = latitude, y = Life_expectancy_years, color = region)) + geom_point(stat = 'identity')
+graf3
