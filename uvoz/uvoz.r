@@ -83,7 +83,8 @@ uvozi.indikatorjirazvoja <- function() {
                  "Timor-Leste" = "East Timor","Venezuela (Bolivarian Republic of)" = "Venezuela","Viet Nam" = "Vietnam",
                  'Tanzania (United Republic of)' = 'Tanzania')
   data <- data %>% mutate(Country = ifelse(Country %in% names(zamenjave), zamenjave[Country], Country),
-                          `HDI rank` = parse_number(`HDI rank`))
+                          `HDI rank` = parse_number(`HDI rank`),`Life expectancy(years)` = parse_number(`Life expectancy(years)`),
+                          `GNI per capita` = parse_number(`GNI per capita`))
   return(data)
 }
 
