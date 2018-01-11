@@ -1,16 +1,9 @@
 # 3. faza: Vizualizacija podatkov
 
 # Uvozimo zemljevid.
-zemljevid <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
-                             "OB/OB", encoding = "Windows-1250")
-levels(zemljevid$OB_UIME) <- levels(zemljevid$OB_UIME) %>%
-  { gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
-zemljevid$OB_UIME <- factor(zemljevid$OB_UIME, levels = levels(obcine$obcina))
-zemljevid <- pretvori.zemljevid(zemljevid)
+zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
+                             "ne_110m_admin_0_countries", encoding = "UTF-8") %>% pretvori.zemljevid()
 
-# Izračunamo povprečno velikost družine
-povprecja <- druzine %>% group_by(obcina) %>%
-  summarise(povprecje = sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
 
 #GRAFI
 
@@ -24,3 +17,6 @@ graf2
 
 graf3 <- ggplot(data = skupaj, aes(x = latitude, y = Life_expectancy_years, color = region)) + geom_point(stat = 'identity')
 graf3
+
+ggplot() + geom_polygon(data = zemljevid %>% left_join(skupaj, by = c("SOVEREIGNT" = "Country")),
+                        aes(x = long, y = lat, group = group, fill = Life_expectancy_years))

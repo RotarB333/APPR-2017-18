@@ -70,9 +70,9 @@ uvozi.legadrzav <- function() {
 Lega_drzav <- uvozi.legadrzav()
 
 uvozi.indikatorjirazvoja <- function() {
-  data <- read_xls('podatki/Human Development Index and its components.xls', range = "A10:M200", col_names = FALSE) %>%
+  data <- read_xls('podatki/Human Development Index and its components.xls', n_max=197) %>%
     drop_na(1)
-  data <- data[, -c(4,6,8,10,12)]
+  data <- data[-1, -c(4,6,8,10,12)]
   names(data) <- c("HDI rank", "Country",'HDI value(2014)','Life expectancy(years)','Expected years of schooling',
                    'Mean years of schooling','GNI per capita','GNI per capita rank - HDI rank')
   zamenjave <- c("Hong Kong, China (SAR)" = "Hong Kong",'Bolivia (Plurinational State of)'='Bolivia',
@@ -83,7 +83,8 @@ uvozi.indikatorjirazvoja <- function() {
                  "Timor-Leste" = "East Timor","Venezuela (Bolivarian Republic of)" = "Venezuela","Viet Nam" = "Vietnam",
                  'Tanzania (United Republic of)' = 'Tanzania')
   data <- data %>% mutate(Country = ifelse(Country %in% names(zamenjave), zamenjave[Country], Country),
-                          `HDI rank` = parse_number(`HDI rank`))
+                          `HDI rank` = parse_number(`HDI rank`),`Life expectancy(years)` = parse_number(`Life expectancy(years)`),
+                          `GNI per capita` = parse_number(`GNI per capita`))
   return(data)
 }
 
