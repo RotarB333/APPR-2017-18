@@ -111,4 +111,3 @@ hrate <- uvozi.hrate()
 data$Country <- ifelse(is.na(zamenjave[data$Country]), data$Country, zamenjave[data$Country])
 
 skupaj <- indikatorji %>% full_join(Lega_drzav) %>% full_join(hrate, by = c("Country" = "country"))
-
