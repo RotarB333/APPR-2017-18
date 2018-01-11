@@ -18,5 +18,12 @@ graf2
 graf3 <- ggplot(data = skupaj, aes(x = latitude, y = Life_expectancy_years, color = region)) + geom_point(stat = 'identity')
 graf3
 
+graf4 <- ggplot(data = skupaj, aes(x = HDIrank, y = Life_expectancy_years, color = region)) + geom_point(stat = 'identity')
+graf4
+
+graf5 <- ggplot(data = skupaj, aes(x = latitude, y = GNI_per_capita, color = region)) + geom_point(stat = 'identity')
+graf5 <- graf5 + scale_x_continuous(breaks = seq(-80,80,10))
+graf5
+
 ggplot() + geom_polygon(data = zemljevid %>% left_join(skupaj, by = c("SOVEREIGNT" = "Country")),
                         aes(x = long, y = lat, group = group, fill = Life_expectancy_years))
