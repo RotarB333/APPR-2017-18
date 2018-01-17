@@ -48,20 +48,20 @@ Pri vseh treh razpredelnicah sem preimenovak države tako, da se vsa imena ujema
 
 oblika razpredelice:(stolpci)
 
-1.HDI rank - rangiranje vseh držav ZN
-2.Country - imena držav
-3.HDI value 2014
-4.Life expectancy years - pričakovana življenska doba
-5.Expected years of schooling
-6.Mean years of schooling
-7.GNI per capita
-8.GNI pc rank - HDI rank
-9.kratica (države)
-10.latitude - Geografska širina države
-11.rate - Število umorov na 100000 prebivalcec
-12.count - Dejansko število umorov
-13.region - celina
-14.subregion - west/central/east... celine
+*1.HDI rank - rangiranje vseh držav ZN
+*2.Country - imena držav
+*3.HDI value 2014
+*4.Life expectancy years - pričakovana življenska doba
+*5.Expected years of schooling
+*6.Mean years of schooling
+*7.GNI per capita
+*8.GNI pc rank - HDI rank
+*9.kratica (države)
+*10.latitude - Geografska širina države
+*11.rate - Število umorov na 100000 prebivalcec
+*12.count - Dejansko število umorov
+*13.region - celina
+*14.subregion - west/central/east... celine
 
 
 
