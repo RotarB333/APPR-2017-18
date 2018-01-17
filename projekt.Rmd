@@ -21,7 +21,19 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+V projektu bom analiziral in združil podatke o indikatorjih razvoja posameznih držav ZN, in iskal možne povezave z naravoslovnimi podatki(oddaljenost od ekvatorja, povprečna temperatura), poskušal bom določiti kateri indikatorji so v skladu s teorijo, da se razvojna stopnja povečuje z oddaljenostjo od ekvatorja in katere države izstopajo. 
+
+
+Za naravoslovne podtake bom uporabil vikipedijo in global data bank, za indikatorje razvoja pa data.un.org (podatkovna baza ZN).
+Ker pri nekaterih državah ni podatkov za vsako leto, bom pri vseh upošteval podatke za zadnje leto, ki je na voljo. Po potrebi bom dodal še kakšne bolj zanimive indikatorje razvoja.
+
+Za indikatorje razvoja bom upošteval:
+
+* BDP per capita
+* pričakovana starost
+* število let šolanja
+* število umorov
+ ...
 
 ***
 
@@ -31,33 +43,28 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Uvozil sem podatke o geografski širini (oblika CSV), o umorih z Wikipedije + celinami(oblika html), o HDI indeksu in komponentah (oblika xls). Pri podatkih sem pobrisal nepotrebne stolpce in vrstice.S funkcijo parse_number sem še poskrbel, da se vsi številski podatkidejansko številke.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+Pri vseh treh razpredelnicah sem preimenovak države tako, da se vsa imena ujemajo, ter jih po imenu držav združil v eno večjo razpredelnico("skupaj") oblike *tidy data*. Spremenil sem še nekatera imena držav, za kasnejšo vizualizacijo z zemljevidom.
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+oblika razpredelice:(stolpci)
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
+1.HDI rank - rangiranje vseh držav ZN
+2.Country - imena držav
+3.HDI value 2014
+4.Life expectancy years - pričakovana življenska doba
+5.Expected years of schooling
+6.Mean years of schooling
+7.GNI per capita
+8.GNI pc rank - HDI rank
+9.kratica (države)
+10.latitude - Geografska širina države
+11.rate - Število umorov na 100000 prebivalcec
+12.count - Dejansko število umorov
+13.region - celina
+14.subregion - west/central/east... celine
 
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
 
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x = naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
-```
 
 ***
 
@@ -67,14 +74,11 @@ ggplot(obcine, aes(x = naselja)) + geom_histogram() +
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 ```
 
-Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino.
+Najprej sem še uvozil zemljevid sveta s politično delitvijo.
 
-```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'}
-ggplot() + geom_polygon(data = left_join(zemljevid, povprecja, by = c("OB_UIME" = "obcina")),
-                        aes(x = long, y = lat, group = group, fill = povprecje)) +
-  ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") +
-  guides(fill = guide_colorbar(title = "Povprečje"))
-```
+
+
+
 
 ***
 

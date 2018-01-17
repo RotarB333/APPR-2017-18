@@ -15,23 +15,12 @@ Za indikatorje razvoja bom upošteval:
 * BDP per capita
 * pričakovana starost
 * število let šolanja
-* delež prebivalstva v revščini
-* število umorov, kriminal 
-* zdravstvena oskrba
-* dostop do interneta
-* porodniški dopust
-* število otrok rojenih v bolnišnicah ...
+* število umorov
+ ...
 
 ## Tabele
 
-* geografska širina - indikatorji razvoja
-* geografska širina - inidkatorji razvoja, ki so na voljo za vsa leta
-* povprečna temperatura - indikatorji razvoja
-* povprečna nadmorska višina - indikatorji razvoja
-* posamezne tabele za celine
-
-
-
+* država - celina - geografska širina - indikatorji razvoja 
 
 
 ## Program
@@ -65,3 +54,4 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `gsubfn` - za delo z nizi (čiščenje podatkov)
 * `ggplot2` - za izrisovanje grafov
 * `extrafont` - za pravilen prikaz šumnikov (neobvezno)
+* `readxl` - za branje podatkov oblike xls

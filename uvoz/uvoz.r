@@ -111,5 +111,6 @@ hrate <- uvozi.hrate()
 data$Country <- ifelse(is.na(zamenjave[data$Country]), data$Country, zamenjave[data$Country])
 
 skupaj <- indikatorji %>% full_join(Lega_drzav) %>% full_join(hrate, by = c("Country" = "country"))
-zamenjave <- c("United States" = "United States of America","Serbia" = "Republic of Serbia","Tanzania" = "United Republic of Tanzania")
+zamenjave <- c("United States" = "United States of America","Serbia" = "Republic of Serbia","Tanzania" = "United Republic of Tanzania","Czech Republic"="Czechia")
 skupaj <- skupaj %>% mutate(Country = ifelse(Country %in% names(zamenjave), zamenjave[Country], Country))
+
