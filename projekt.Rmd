@@ -83,7 +83,7 @@ print(map1)
 
 Nekateri viri so poleg podatkov za države vsebovali tudi podatke za posamezna ombočja teh držav, večinoma otočja,ki sem jih tudi vključil v tabelo, ker so se nekateri podatki nanašali prav na ta.
 
-Nekatere indikatorje bomo preverili še za posamezune regije.
+Nekatere indikatorje bomo preverili še za posamezune regije (celine), ki imajo podobno skupn število držav, razen Oceanije.
 
 ```{r graf.Drz, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.Drz)
@@ -109,24 +109,38 @@ print(graf.hdi2)
 
 Glavni cilj je iskanje spremenljivke, kjer je razpršenost najmanjša.
 
+Najprej si poglejmo relativno število umorov.
+
 ```{r graf.mrate, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.mrate)
 ```
 
 Opazimo 2 trenda, število umorov hitreje pada proti severu in večja razpršenost se pojavi proti jugu.(na grafu manjka El Salvador kjer je mrate 108)
 
+Oglejmo si še razporejenost glede na regije:
 
 ```{r graf.mrate.region, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.mrate.region)
 ```
 
-Oglejmo si še posebej za Evropo 
+Zanimivi sta predvsem Evropa, ki je strnjena in Ameriki, ki sta zelo razpršeni.
+
+Oglejmo si še posebej za Evropo:
 
 ```{r graf.mrate.evropa, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.mrate.evropa)
 ```
 
+Opazimo, da najmanjše države(San Marino, Monako, Liechtenstein) nimajo umorov in da se proti skrajnemu severu število veča.
 Iz grafov bi lahko rekli, da je idealna GŠ za najmanj umorov med 40 in 55 SGŠ.
+
+Oglejmo si še za Ameriki:
+
+```{r graf.mrate.amerika, echo=FALSE, message=FALSE, warning=FALSE}
+print(graf.mrate.amerika)
+```
+
+Vidimo, da je okoli 10 stopinj SGŠ številka največja in se hitro niža proti robom. Razlaga je predvsem v tem, da so tam območja kjer na veliko gojijo kokain ter Panamski prekop je glavna prometnica za trg ilegalnih narkotikov v Severno Ameriko, tam zato uspevajo mnogi karteli,kar povečuje korupcijo, kriminal in s tem število umorov.
 
 
 ```{r graf.hdirank, echo=FALSE, message=FALSE, warning=FALSE}
