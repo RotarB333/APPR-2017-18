@@ -161,6 +161,14 @@ print(graf.psola)
 ```
 
 Ta graf že bolje potrjuje hipotezo, da se z odaljenostjo od specifične GŠ kvaliteta življenja izboljšuje, v tem primeru je ta 15 stopinj SGŠ.
+Če si bolj podrobno pogledamo Afriko:
+
+```{r graf.psola.afrika, echo=FALSE, message=FALSE, warning=FALSE}
+print(graf.psola.afrika)
+```
+
+Najkrajša dolžina šolanja je blizu 4 let in se proti severu veča hitreje kot proti jugu.Najslabše je torej pri 14 stopinj SGŠ. To je pas imenovan Sahel, ki je znan po največji revščini, ker se nahajo tik ob Sahari, ki se širi proti jugu. Torej morej zaradi slabih naravnih pogojev otroci pomagati staršem in posledično ni možna potreba po daljšem šolanju.
+
 
 ```{r graf.dsola, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.dsola)
@@ -174,6 +182,7 @@ print(graf.dsola.evropa)
 
 Če pogledamo le Evropo, vidimo da so države zelo blizu neke krivulje, torej idealna GŠ za šolanje je po hipotezi okoli 56 SGŠ.
 
+V splošnem torej vedno obstaja neka centralna GŠ, ki ni vedno ekvator, od koder se proti severu in jugu situacija do neke mere v povprečju izboljšuje. 
 
 
 ***
