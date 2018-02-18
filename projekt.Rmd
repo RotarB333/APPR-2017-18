@@ -21,7 +21,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-V projektu bom analiziral in združil podatke o indikatorjih razvoja posameznih držav ZN, in iskal možne povezave z naravoslovnimi podatki(oddaljenost od ekvatorja, povprečna temperatura), poskušal bom določiti kateri indikatorji so v skladu s teorijo, da se razvojna stopnja povečuje z oddaljenostjo od ekvatorja in katere države izstopajo. 
+V projektu bom analiziral in združil podatke o indikatorjih razvoja posameznih držav ZN in iskal možne povezave z naravoslovnimi podatki (oddaljenost od ekvatorja, povprečna temperatura), poskušal bom določiti kateri indikatorji so v skladu s teorijo, da se razvojna stopnja povečuje z oddaljenostjo od ekvatorja, in katere države izstopajo. 
 
 
 Za naravoslovne podtake bom uporabil vikipedijo in global data bank, za indikatorje razvoja pa data.un.org (podatkovna baza ZN).
@@ -43,11 +43,11 @@ Za indikatorje razvoja bom upošteval:
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozil sem podatke o geografski širini (oblika CSV), o umorih z Wikipedije + celinami(oblika html), o HDI indeksu in komponentah (oblika xls). Pri podatkih sem pobrisal nepotrebne stolpce in vrstice.S funkcijo parse_number sem še poskrbel, da se vsi številski podatkidejansko številke.
+Uvozil sem podatke o geografski širini (oblika CSV), o umorih z Wikipedije (oblika html, vključuje tudi regije), o HDI indeksu in komponentah (oblika xls). Pri podatkih sem pobrisal nepotrebne stolpce in vrstice. S funkcijo parse_number sem še poskrbel, da se vsi številski podatki dejansko številke.
 
-Pri vseh treh razpredelnicah sem preimenovak države tako, da se vsa imena ujemajo, ter jih po imenu držav združil v eno večjo razpredelnico("skupaj") oblike *tidy data*. Spremenil sem še nekatera imena držav, za kasnejšo vizualizacijo z zemljevidom.
+Pri vseh treh razpredelnicah sem preimenoval države tako, da se vsa imena ujemajo, ter jih po imenu držav združil v eno večjo razpredelnico ("skupaj") oblike *tidy data*. Spremenil sem še nekatera imena držav za kasnejšo vizualizacijo z zemljevidom.
 
-oblika razpredelice:(stolpci)
+Oblika razpredelice: (stolpci)
 
 * 1.HDI rank - rangiranje vseh držav ZN
 * 2.Country - imena držav
@@ -75,7 +75,7 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 ## Pregled podatkov
 
-Najprej si oglejmo povprečno geografsko širino(GŠ). Kakor vidimo imamo podatke za vse države razen Južni Sudan in Somaliland, ki sta novo-nastali državi. Poleg tega povprečna širina ne vključuje raznih otočij, ki jih imajo nekatere države.
+Najprej si oglejmo povprečno geografsko širino (GŠ). Kakor vidimo imamo podatke za vse države razen Južni Sudan in Somaliland, ki sta novo-nastali državi. Poleg tega povprečna širina ne vključuje raznih otočij, ki jih imajo nekatere države.
 
 ```{r map1, echo=FALSE, message=FALSE, warning=FALSE}
 print(map1)
@@ -83,7 +83,7 @@ print(map1)
 
 Nekateri viri so poleg podatkov za države vsebovali tudi podatke za posamezna ombočja teh držav, večinoma otočja,ki sem jih tudi vključil v tabelo, ker so se nekateri podatki nanašali prav na ta.
 
-Nekatere indikatorje bomo preverili še za posamezune regije (celine), ki imajo podobno skupn število držav, razen Oceanije.
+Nekatere indikatorje bomo preverili še za posamezune regije (celine), ki imajo podobno skupno število držav, razen Oceanije.
 
 ```{r graf.Drz, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.Drz)
@@ -93,7 +93,7 @@ print(graf.Drz)
 
 ## HDI indeks
 
-Človeški razvojni indeks upošteva razne vidike kvalitete življenja ter BDP, predstavljen je s številom me 0 in 1, kjer 1 pomeni 'popolna država',ki je vseh kriterjih dosegla najboljšo vrednost.
+Človeški razvojni indeks upošteva razne vidike kvalitete življenja ter BDP, predstavljen je s številom med 0 in 1, kjer 1 pomeni 'popolna država', ki je v vseh kriterijih dosegla najboljšo vrednost.
 
 ```{r graf.hdi1, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.hdi1)
@@ -115,7 +115,7 @@ Najprej si poglejmo relativno število umorov.
 print(graf.mrate)
 ```
 
-Opazimo 2 trenda, število umorov hitreje pada proti severu in večja razpršenost se pojavi proti jugu.(na grafu manjka El Salvador kjer je mrate 108)
+Opazimo 2 trenda, število umorov hitreje pada proti severu in večja razpršenost se pojavi proti jugu (na grafu manjka El Salvador kjer je mrate 108).
 
 Oglejmo si še razporejenost glede na regije:
 
@@ -131,7 +131,7 @@ Oglejmo si še posebej za Evropo:
 print(graf.mrate.evropa)
 ```
 
-Opazimo, da najmanjše države(San Marino, Monako, Liechtenstein) nimajo umorov in da se proti skrajnemu severu število veča.
+Opazimo, da najmanjše države (San Marino, Monako, Liechtenstein) nimajo umorov in da se proti skrajnemu severu število veča.
 Iz grafov bi lahko rekli, da je idealna GŠ za najmanj umorov med 40 in 55 SGŠ.
 
 Oglejmo si še za Ameriki:
@@ -140,7 +140,7 @@ Oglejmo si še za Ameriki:
 print(graf.mrate.amerika)
 ```
 
-Vidimo, da je okoli 10 stopinj SGŠ številka največja in se hitro niža proti robom. Razlaga je predvsem v tem, da so tam območja kjer na veliko gojijo kokain ter Panamski prekop je glavna prometnica za trg ilegalnih narkotikov v Severno Ameriko, tam zato uspevajo mnogi karteli,kar povečuje korupcijo, kriminal in s tem število umorov.
+Vidimo, da je okoli 10 stopinj SGŠ številka največja in se hitro niža proti robom. Razlaga je predvsem v tem, da so tam območja kjer na veliko gojijo koko ter Panamski prekop je glavna prometnica za trg ilegalnih narkotikov v Severno Ameriko, tam zato uspevajo mnogi karteli, kar povečuje korupcijo, kriminal in s tem število umorov.
 
 
 ```{r graf.hdirank, echo=FALSE, message=FALSE, warning=FALSE}
@@ -161,20 +161,21 @@ print(graf.psola)
 ```
 
 Ta graf že bolje potrjuje hipotezo, da se z odaljenostjo od specifične GŠ kvaliteta življenja izboljšuje, v tem primeru je ta 15 stopinj SGŠ.
+
 Če si bolj podrobno pogledamo Afriko:
 
 ```{r graf.psola.afrika, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.psola.afrika)
 ```
 
-Najkrajša dolžina šolanja je blizu 4 let in se proti severu veča hitreje kot proti jugu.Najslabše je torej pri 14 stopinj SGŠ. To je pas imenovan Sahel, ki je znan po največji revščini, ker se nahajo tik ob Sahari, ki se širi proti jugu. Torej morej zaradi slabih naravnih pogojev otroci pomagati staršem in posledično ni možna potreba po daljšem šolanju.
+Najkrajša dolžina šolanja je blizu 4 let in se proti severu veča hitreje kot proti jugu. Najslabše je torej pri 14 stopinj SGŠ. To je pas imenovan Sahel, ki je znan po največji revščini, ker se nahajo tik ob Sahari, ki se širi proti jugu. Torej morajo zaradi slabih naravnih pogojev otroci pomagati staršem in posledično ni možna potreba po daljšem šolanju.
 
 
 ```{r graf.dsola, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.dsola)
 ```
 
-Vidimo, da je dejanska dolžina šolanja za 2-5 let manjša od dejanske, je pa bolj razpršena.
+Vidimo, da je dejanska dolžina šolanja za 2-5 let manjša od pričakovane, je pa bolj razpršena.
 
 ```{r graf.dsola.evropa, echo=FALSE, message=FALSE, warning=FALSE}
 print(graf.dsola.evropa)
